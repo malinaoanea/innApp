@@ -1,0 +1,90 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- <base href="/Users/malinaoanea/Desktop/tries/an3/optional/site" target="_blank"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+	<!--<link rel="stylesheet" type="text/css" href="Stilizare/Suits.css">
+  <script src="Stilizare/javaS.js"></script>
+  -->
+  <!-- <link rel="stylesheet" type="text/css" href="/Stilizare/casageo.css"> -->
+  <!-- <link rel="stylesheet" href="/stil.css"> -->
+  
+  <link rel="stylesheet" href="{% static 'innapp/css/stil.css' %}">
+
+  <meta charset="UTF-8"> 
+  <!-- <link href="res/super-panel.css" rel="stylesheet" />
+  <script src="res/super-panel.js"></script> -->
+  <title>Casa Georgiana</title>
+
+
+
+
+</head>
+<body>
+  <span data-panel="panel1" class="panel-button openbtn">☰</span>
+
+  <nav class= "header-bar-container">
+    
+
+    <div class = "header-lodge-name">
+      <!-- <button class="openbtn" id = "demo" onclick=myFunction()>☰</button>  --> 
+      <a href="https://www.facebook.com/pensiuneacasageorgiana" class="fa fa-facebook"></a>
+      <a class="fa fa-phone" href="tel:+40743330634"></a>
+    </div>
+
+
+   
+
+    <div class = "navbar-collapse" id="panel1">
+      <div class = "navbar-items">
+        <div><a href='casageorgiana.html'  target = "_self">Acasa</a></div>
+        <div><a href='Imprejurimi.html'  target = "_self" >Imprejurimi</a></div>
+        <div><a>Camere</a></div>
+        <div><a>Contact</a></div>
+      </div>
+    </div>
+        
+  
+  
+  </nav>
+
+<div class="flex-container">
+  
+  <div class="img-container">
+    <div><img class = "main-image" src="{% static 'innapp/css/foisor.jpeg' %}" alt="Trulli" height="750"></div>
+    <h2 class="centered">Casa Georgiana <br > </h1>
+  </div>
+
+  <div class = "grid-container flex-item">
+
+    <div class = "in-grid-container" >
+      <div><img src="{% static 'innapp/css/gradina3.jpeg' %}" alt="Trulli" height="600" style="width:600px; max-width: 100%; margin: 0px" ></div>
+      <h  class = "first-description" >
+        Nature is our life-support system. From the fresh air</br> we breathe to the clean water we drink,</br> nature provides the essentials we all rely on for</br> our survival and well-being. And it also holds the key to our prosperity,</br> with millions of livelihoods and much of our economic activity</br> also depending on the natural world. These</br> immense benefits to humanity, estimated to be</br> worth around US$125 trillion a year, are only possible</br> if we maintain a rich diversity of wildlife.
+      </br>We know that we are losing nature faster than</br>Un articolr</h>
+    </div>
+    
+    <div class = "in-grid-container" >
+      <div  class = "first-description" >Aceasta este </div>
+      <div><img src="{% static 'innapp/css/foisor.jpeg' %}" alt="Trulli" height="550" style="width:450px; max-width: 100%; margin: 0px" ></div>
+    </div>  
+
+    <div class = "in-grid-container" >
+      <div><img src="{% static 'innapp/css/terasa1.jpeg' %}" alt="Trulli" height="600" style="width:500px; max-width: 100%; margin: 0px" ></div>
+      <div  class = "first-description" >Aceasta este </div>
+    </div>
+  
+  </div>
+
+  <div class = "backImg">sdsnk</div>
+  <div class = "flex-item copyright">
+    <h>Copyright</h>
+  </div>
+
+</div>
+</body>
+</html>

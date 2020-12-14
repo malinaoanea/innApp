@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from django.views.generic import ListView, FormView
+from django.views.generic import ListView, FormView, View
 from .models import Room, Book
 from .forms import AvailibiltyForm
 
@@ -26,6 +26,14 @@ def check_if_available(room, start_date, end_date):
 # Create your views here.
 class RoomList(ListView):
     model = Room
+
+class MainView(View):
+    def get(self, request, *args, **kwargs):
+        """
+        docstring
+        """
+        return render(request, "main_view.html")
+
 
 class BookList(ListView):
     model = Book

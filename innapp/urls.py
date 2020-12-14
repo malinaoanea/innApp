@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RoomList, BookList, BookingView
+from .views import RoomList, BookList, BookingView, MainView
 
 
 app_name = 'innapp'
@@ -8,5 +8,8 @@ app_name = 'innapp'
 urlpatterns = [
     path('room_list/', RoomList.as_view(), name='room_list'),
     path('book_list/', BookList.as_view(), name='book_list'),
-    path('book/', BookingView.as_view(), name="booking_view")
+    path('book/', BookingView.as_view(), name="booking_view"),
+    path('home/', MainView.as_view(), name="home")
 ]
+
+# urlpatterns += statcfiles_urlpatterns()
