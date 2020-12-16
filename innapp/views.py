@@ -1,7 +1,9 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, reverse
 from django.views.generic import ListView, FormView, View
 from .models import Room, Book
 from .forms import AvailibiltyForm
+
+
 
 def check_if_available(room, start_date, end_date):
         """
@@ -24,8 +26,29 @@ def check_if_available(room, start_date, end_date):
         return True
 
 # Create your views here.
-class RoomList(ListView):
-    model = Room
+def RoomListView(request):
+    # gets the first room
+    room = Room.objects.all()[0]
+    room_category= dict(room.ROOM_CATEGORIES)
+    # print(reverse('innapp:room_view', kwargs={'cateogory': 'WB'}))
+    room_values = room_category.values()
+    room_list = []
+    for r in room_category:
+        room = room_category.get(r)
+        # primul argument e numele ddin urls.py https://www.youtube.com/watch?v=JqbBGxDLQeU
+        room_url = reverse('innapp:room_view', kwargs={
+                           'category': r})
+        room_list.append((r, room_url))
+
+    context = {
+        "room_list":room_list
+    }
+    return render (request, 'innapp/room_list.html', context=context)
+
+class RoomView(View):
+    def get(self, request, *args, **kwargs):
+        # print(self.request.user)
+        return HttpResponse('Category does not exist')
 
 class MainView(View):
     def get(self, request, *args, **kwargs):

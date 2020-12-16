@@ -1,11 +1,35 @@
+{%load static%}
+
 <!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Room List</title>
-</head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+
+  
+  <link rel="stylesheet" href="{% static 'innapp/css/stil_room_list.css' %}">
+
+  <meta charset="UTF-8"> 
+  <title>Room List</title>
 
 <body>
-    {{room_list}}
+    <h2>Rooms</h2>
+    <!-- Main Content -->
+    <div id="rooms">
+        {% for room_category, room_url in room_list %}
+        <div class="room">
+          <a href="{{room_url}}"> 
+            <img class = "main-image" src="{% static 'innapp/css/door.jpeg' %}" alt="Trulli" height="750">
+          <h2>{{room_category}}<h2>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi
+          </p>
+          </a>
+        </div>
+
+        {% endfor %}
+    </div>
 </body>
 
 </html>

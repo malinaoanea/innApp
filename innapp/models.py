@@ -5,7 +5,7 @@ from django.conf import settings
 
 class Room(models.Model):
     # cu baie, fara baie
-    ROOM_CATEGORIES = ( ('WB', 'bathroom'), ('NB', 'no bathroom'))
+    ROOM_CATEGORIES = ( ('WB', 'bathroom'), ('NB', 'nbathroom'))
     number = models.IntegerField(default=0)
     category = models.CharField(max_length=5, choices=ROOM_CATEGORIES)
     beds = models.IntegerField(default=0)
