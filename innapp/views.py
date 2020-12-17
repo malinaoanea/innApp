@@ -1,8 +1,10 @@
-from django.shortcuts import render, HttpResponse, reverse
-from django.views.generic import ListView, FormView, View
-from .models import Room, Book
-from .forms import AvailibiltyForm
+from django.shortcuts import render, HttpResponse, reverse, redirect
+from django.views.generic import ListView, FormView, View, CreateView
+from .models import Room, Book, UserProfile, User
+from .forms import AvailibiltyForm, UserProfileForm
 
+
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
 def check_if_available(room, start_date, end_date):
@@ -93,4 +95,17 @@ class BookingView(FormView):
             return HttpResponse(book)
         else:
             return HttpResponse('There are no rooms for this category available.')
+
+
+class RegisterView(CreateView):
+    template_name= 'register.html'
+    form_class = UserCreationForm
+    model = User
+
+    def form_valid(self, form):
+        data = form.cleaned_data
+        user = User.objects.create_user(username=data['username'],
+                                        password=data['password1'])
+        UserProfile.objects.create(user=user)
+        return redirect('main_view')
 

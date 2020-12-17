@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 
@@ -31,4 +32,10 @@ class Book(models.Model):
     def __str__(self):
         return 'Client {} has booked room {} on {} to {}'.format(self.client, self.room, self.check_in, self.check_out)
 
+User = get_user_model()
 
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    birthday = models.DateField(blank=True, null=True)
+  
