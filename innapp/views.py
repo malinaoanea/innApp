@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, reverse, redirect
-from django.views.generic import ListView, FormView, View, CreateView
+from django.views.generic import ListView, FormView, View, CreateView, TemplateView
 from .models import Room, Book, UserProfile, User
 from .forms import AvailibiltyForm, UserProfileForm
 
@@ -109,3 +109,20 @@ class RegisterView(CreateView):
         UserProfile.objects.create(user=user)
         return redirect('main_view')
 
+class LoginView(TemplateView):
+    template_name = 'login.html'
+
+    def get_context_data(self):
+        form = AuthenticationForm()
+        return {'form':form}
+
+    def post(self, request, *args, **kargs):
+        form = AuthenticationForm(request=request, data=request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            user = authenticate(username=data['username'],
+                                password=data['password'])
+            login(request, user)
+            return redirect(reverse_lazy('main_view'))
+        else:
+            render(request, "login.html", {"form":form})
