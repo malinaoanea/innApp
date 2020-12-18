@@ -1,10 +1,11 @@
 from django.shortcuts import render, HttpResponse, reverse, redirect
 from django.views.generic import ListView, FormView, View, CreateView, TemplateView
-from .models import Room, Book, UserProfile, User
-from .forms import AvailibiltyForm, UserProfileForm
+from .models import Room, Book, User, Client
+from .forms import AvailibiltyForm, RegisterForm
 
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login, authenticate, logout
 
 
 def check_if_available(room, start_date, end_date):
@@ -99,15 +100,17 @@ class BookingView(FormView):
 
 class RegisterView(CreateView):
     template_name= 'register.html'
-    form_class = UserCreationForm
+    form_class = RegisterForm
     model = User
 
     def form_valid(self, form):
         data = form.cleaned_data
         user = User.objects.create_user(username=data['username'],
                                         password=data['password1'])
-        UserProfile.objects.create(user=user)
-        return redirect('main_view')
+        Client.objects.create(user=user)
+        return redirect('/')
+
+
 
 class LoginView(TemplateView):
     template_name = 'login.html'
@@ -122,7 +125,17 @@ class LoginView(TemplateView):
             data = form.cleaned_data
             user = authenticate(username=data['username'],
                                 password=data['password'])
-            login(request, user)
-            return redirect(reverse_lazy('main_view'))
+            if user is not None:
+                login(request, user)
+                return redirect('/')
+            else:
+
+                return render(request, "login.html", {"form":form}, status = "unsucces")
+
         else:
-            render(request, "login.html", {"form":form})
+            return render(request, "login.html", {"form":form})
+
+
+def logout_r(request):
+    logout(request)
+    return redirect("register")
