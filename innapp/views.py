@@ -89,7 +89,8 @@ class BookingView(FormView):
                 client = self.request.user,
                 room = room,
                 check_in = data['check_in'],
-                check_out= data['check_out']
+                check_out= data['check_out'], 
+                number_of_rooms=data['number_of_rooms']
             )
 
             book.save()

@@ -12,6 +12,7 @@ class AvailibiltyForm(forms.Form):
 
     check_in = forms.DateTimeField(required=True, input_formats=["%Y-%m-%dT%H:%M", ])
     check_out = forms.DateTimeField(required=True,  input_formats=["%Y-%m-%dT%H:%M", ])
+    number_of_rooms = forms.IntegerField(required=True)
 
 class ProfileForm(forms.ModelForm):
     first_name = forms.CharField(max_length=100)

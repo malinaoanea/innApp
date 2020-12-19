@@ -23,9 +23,10 @@ class Book(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     check_in = models.DateTimeField()
     check_out = models.DateTimeField()
+    number_of_rooms = models.IntegerField(default=0)
 
     def __str__(self):
-        return 'Client {} has booked room {} on {} to {}'.format(self.client, self.room, self.check_in, self.check_out)
+        return 'Client {} has booked {} rooms {} on {} to {}'.format(self.client, self.number_of_rooms, self.room, self.check_in, self.check_out)
 
 
 
