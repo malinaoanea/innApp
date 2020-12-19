@@ -1,7 +1,7 @@
-from django.shortcuts import render, HttpResponse, reverse, redirect
-from django.views.generic import ListView, FormView, View, CreateView, TemplateView
-from .models import Room, Book, User, Client
-from .forms import AvailibiltyForm, RegisterForm
+from django.shortcuts import render, HttpResponse, reverse, redirect 
+from django.views.generic import ListView, FormView, View, CreateView, TemplateView, UpdateView
+from .models import Room, Book, User, ClientProfile
+from .forms import AvailibiltyForm, ProfileForm
 
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -98,17 +98,18 @@ class BookingView(FormView):
             return HttpResponse('There are no rooms for this category available.')
 
 
+
 class RegisterView(CreateView):
     template_name= 'register.html'
-    form_class = RegisterForm
+    form_class = UserCreationForm
     model = User
 
     def form_valid(self, form):
         data = form.cleaned_data
         user = User.objects.create_user(username=data['username'],
                                         password=data['password1'])
-        Client.objects.create(user=user)
-        return redirect('/')
+        ClientProfile.objects.create(user=user)
+        return redirect('/login')
 
 
 
@@ -117,25 +118,45 @@ class LoginView(TemplateView):
 
     def get_context_data(self):
         form = AuthenticationForm()
-        return {'form':form}
+        return {'form': form}
 
-    def post(self, request, *args, **kargs):
+    def post(self, request, *args, **kwargs):
         form = AuthenticationForm(request=request, data=request.POST)
         if form.is_valid():
             data = form.cleaned_data
             user = authenticate(username=data['username'],
                                 password=data['password'])
-            if user is not None:
-                login(request, user)
-                return redirect('/')
-            else:
-
-                return render(request, "login.html", {"form":form}, status = "unsucces")
-
+            login(request, user)
+            return redirect('/')
         else:
-            return render(request, "login.html", {"form":form})
+            return render(request, "login.html", {"form": form})
 
 
 def logout_r(request):
     logout(request)
     return redirect("register")
+
+
+class ProfileUpdateView(UpdateView):
+    model = ClientProfile
+    form_class = ProfileForm
+    template_name = 'profile_update.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProfileUpdateView, self).get_context_data(**kwargs)
+        user =  self.object.user
+        context['form'].fields['first_name'].initial = user.first_name
+        context['form'].fields['last_name'].initial = user.last_name
+        context['form'].fields['e_mail'].initial = user.email
+        return context
+
+    def form_valid(self, form):
+        data = form.cleaned_data
+        self.object.phone_number = data['phone_number']
+        self.request.user.first_name = data['first_name']
+        self.request.user.last_name = data['last_name']
+        self.request.user.email = data['e_mail']
+        self.object.save()
+        self.request.user.save()
+        return redirect("/",
+                                        kwargs={"pk": self.request.user.id})

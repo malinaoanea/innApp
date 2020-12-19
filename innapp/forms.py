@@ -13,12 +13,11 @@ class AvailibiltyForm(forms.Form):
     check_in = forms.DateTimeField(required=True, input_formats=["%Y-%m-%dT%H:%M", ])
     check_out = forms.DateTimeField(required=True,  input_formats=["%Y-%m-%dT%H:%M", ])
 
-class RegisterForm(UserCreationForm):
+class ProfileForm(forms.ModelForm):
     first_name = forms.CharField(max_length=100)
     last_name = forms.CharField(max_length=100)
     e_mail = forms.CharField(max_length=100)
-    telephone = forms.CharField(max_length=12)
     class Meta:
-        model = User
-        fields = ['username','first_name', 'last_name' ,'e_mail', 'telephone', 'password1','password2']
+        model = models.ClientProfile
+        exclude = ['user']
 
