@@ -28,6 +28,10 @@ def check_if_available(room, start_date, end_date):
 
         return True
 
+
+
+
+
 # Create your views here.
 def RoomListView(request):
     # gets the first room
@@ -81,7 +85,10 @@ class BookingView(FormView):
             if check_if_available(room, data['check_in'], data['check_out']):
                 available_rooms.append(room)
 
-        if len(available_rooms) > 0:
+        number_of_availbale_rooms = len(available_rooms)
+        print(number_of_availbale_rooms )
+
+        if number_of_availbale_rooms > 0:
 
             # take the first room available
             room = available_rooms[0]
