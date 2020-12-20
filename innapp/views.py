@@ -64,6 +64,13 @@ class MainView(View):
         """
         return render(request, "main_view.html")
 
+class Booked(View):
+    def get(self, request, *args, **kwargs):
+        """
+        docstring
+        """
+        return render(request, "booked.html")
+
 
 class BookList(ListView):
     model = Book
@@ -101,7 +108,7 @@ class BookingView(FormView):
             )
 
             book.save()
-            return HttpResponse(book)
+            return redirect("/booked")
         else:
             return HttpResponse('There are no rooms for this category available.')
 
