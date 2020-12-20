@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RoomListView, BookList, BookingView, MainView, RoomView, RegisterView, LoginView, ProfileUpdateView
+from .views import RoomListView, BookList, BookingView, MainView, RoomView, RegisterView, LoginView, ProfileUpdateView,ProfileView , logout_r
 
 
 app_name = 'innapp'
@@ -13,7 +13,13 @@ urlpatterns = [
     path('room_view/<category>', RoomView.as_view(), name="room_view"),
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', LoginView.as_view(), name='login'),
-    path('profile/<int:pk>/edit', ProfileUpdateView.as_view(), name='profile_edit')
+    path('logout/',logout_r,name='logout'),
+
+    # path('profile_update', ProfileUpdateView.as_view(), name='profile_update'),
+    path('profile', ProfileView.as_view(), name='profile'),
+    path('profile/<int:pk>', ProfileView.as_view(), name='profile'),
+
+    path('profile_update/<int:pk>', ProfileUpdateView.as_view(), name='profile_update')
 ]
 
 # urlpatterns += statcfiles_urlpatterns()

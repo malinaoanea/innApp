@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, reverse, redirect 
-from django.views.generic import ListView, FormView, View, CreateView, TemplateView, UpdateView
+from django.views.generic import ListView, FormView, View, CreateView, TemplateView, UpdateView, DetailView
 from .models import Room, Book, User, ClientProfile
 from .forms import AvailibiltyForm, ProfileForm
 
@@ -142,7 +142,15 @@ class LoginView(TemplateView):
 
 def logout_r(request):
     logout(request)
-    return redirect("register")
+    return redirect("/")
+
+class ProfileView(DetailView):
+    template_name = 'profile.html'
+    context_object_name = 'selected_user'
+
+    def get_object(self):
+        selected_user = User.objects.get(id=self.kwargs['pk'])
+        return selected_user
 
 
 class ProfileUpdateView(UpdateView):
@@ -166,5 +174,4 @@ class ProfileUpdateView(UpdateView):
         self.request.user.email = data['e_mail']
         self.object.save()
         self.request.user.save()
-        return redirect("/",
-                                        kwargs={"pk": self.request.user.id})
+        return redirect("",kwargs={"pk": self.request.user.id})

@@ -1,0 +1,5 @@
+{% if user == selected_user %}
+      <div class="m-2">
+        <a class="btn btn-primary" href="{% url 'profile_update' selected_user.id %}">Edit profile</a>
+      </div>
+{% endif %}

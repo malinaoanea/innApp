@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from innapp.views import RoomListView, BookList, BookingView, MainView, RoomView, RegisterView, LoginView,ProfileView, ProfileUpdateView, logout_r
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('innapp.urls')),
+    path('profile/<int:pk>', ProfileView.as_view(), name='profile'),
+
+    path('profile_update/<int:pk>', ProfileUpdateView.as_view(), name='profile_update')
 ]

@@ -1,16 +1,124 @@
-<!DOCTYPE html>
+
+<!doctype html>
+<html lang="en">
+
+
+
 <head>
-    <meta charset="UTF-8">
-    <title>Booking</title>
+    {% load static %}
+
+  <!---REGISTER-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Font Icon -->
+  <link rel="stylesheet" href="{% static 'register/fonts/material-icon/css/material-design-iconic-font.min.css'%}">
+
+  <!-- Main css -->
+  <link rel="stylesheet" href="{% static 'register/css/style.css'%}">
+
+  <!-----END REGISTER---------->
+
+  <title>
+    Register
+  </title>
 </head>
 
 <body>
-    <form action="" method="POST">
-        {{form.as_p}}
-        {% csrf_token %}
-        <button type="submit">Book!</button>
-    </form>
     
+<div class="main">
+
+  <section class="signup">
+      <div class="container">
+          
+          <div class="signup-content">
+              <form method="POST" id="signup-form" class="signup-form">
+                {% csrf_token %}
+
+                  <h2 class="form-title">Create account</h2>
+
+
+                  <!-- <div class="form-group">
+
+                      <input type="text" class="form-input" name="first_name" autofocus="" required ="" maxlength="150" id="id_first_name" placeholder="First Name"/>
+                  </div>
+
+                  <div class="form-group">
+
+                    <input type="text" class="form-input" name="last_name" autofocus="" required ="" maxlength="150" id="id_last_name" placeholder="Last Name"/>
+                </div>
+
+                  <div class="form-group">
+                      <input type="email" class="form-input" name="email"  autofocus="" required ="" maxlength="150" id="id_email" placeholder="Email"/>
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" class="form-input" name="telephone" autofocus="" required ="" maxlength="150" id="id_telephone" placeholder="Telephone number"/>
+                 </div> -->
+
+                 <!-- <div class="form-group">
+                 {{ form.errors }}
+                 </div> -->
+
+                 {% if form.errors %}
+                  {% for field in form %}
+                    {% for error in field.errors %}
+                      <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                      </div>
+                    {% endfor %}
+                  {% endfor %}
+                  {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                      <strong>{{ error|escape }}</strong>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+                 
+                 <div class="form-group">
+                    <input type="text" class="form-input" name="username" autofocus="" required ="" maxlength="150" id="id_username" placeholder="Username"/>
+                 </div>
+                  <div class="form-group">
+                      <input type="password" class="form-input" name="password1"  autofocus="" required ="" maxlength="150" id="id_password1" placeholder="Password"/>
+                      <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-input" name="password2"  autofocus="" required ="" maxlength="150" id="id_password2" placeholder="Re Password"/>
+                    <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                </div>
+                 
+                <div class="form-group">
+                    <input type="submit" name="submit" id="submit" class="form-submit" value="Register"/>
+                </div>
+
+        
+              </form>
+              <p class="loginhere">
+                  Have already an account ? <a href="/login" class="loginhere-link">Login here</a>
+              </p>
+          </div>
+      </div>
+  </section>
+
+
+
+</div>
+<div id="dropDownSelect1"></div>
+
+
+
+  <!-- REGISTER -->
+  <!-- JS -->
+  <script src="{% static 'register/vendor/jquery/jquery.min.js'%}"></script>
+  <script src="{% static 'register/js/main.js'%}"></script>
+
+  <!----END REGISTER-->
+
+
+
+
+ 
 </body>
 
 </html>

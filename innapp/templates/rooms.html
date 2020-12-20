@@ -30,12 +30,12 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/rooms">Rooms</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/Users/camelia/Desktop/django2/innApp/innapp/templates/rooms.html">Rooms</a></li> -->
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Surroundings</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#signup">Contact</a></li>
                         
                         {% if user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'profile' user.id %}">Hello, {{ user.username }}</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'profile_update' user.id %}">Hello, {{ user.username }}</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/logout">Logout</a></li>
 
                         {% else %}
