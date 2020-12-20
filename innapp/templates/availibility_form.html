@@ -1,15 +1,39 @@
+{%load static%}
+
+
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <title>Booking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Casa Georgiana</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'pages/assets/img/favicon.ico'%}" />
+    <!-- Font Awesome icons (free version)-->
+    <!-- <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+     Google fonts
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    Core theme CSS (includes Bootstrap)
+    <link href="{% static 'pages/css/styles.css'%}" rel="stylesheet" /> -->
+    <!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static 'pages/css/bootstrap.min.css'%}"  />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static 'pages/css/style_register.css'%}" />
 </head>
 
 <body>
     <form action="" method="POST">
-        {{form.as_p}}
+        <div><p>check_in</p>{{form.check_in}}</div>
+        {{form.check_out}}
+        {{form.room_category}}
+        {{form.number_of_rooms}}
         {% csrf_token %}
         <button type="submit">Book!</button>
     </form>
+    
     
 </body>
 
