@@ -6,6 +6,7 @@ from .forms import AvailibiltyForm, ProfileForm
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
+from django.contrib import messages
 
 
 def check_if_available(room, start_date, end_date):
@@ -110,7 +111,8 @@ class BookingView(FormView):
             book.save()
             return redirect("/booked")
         else:
-            return HttpResponse('There are no rooms for this category available.')
+            # return HttpResponse('There are no rooms for this category available.')
+            return HttpResponse("There are no available rooms for this period. Please choose another one!")
 
 
 
