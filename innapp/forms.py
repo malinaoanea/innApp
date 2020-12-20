@@ -10,8 +10,8 @@ class AvailibiltyForm(forms.Form):
     
     room_category = forms.ChoiceField(choices=room_categories, required=True)
 
-    check_in = forms.DateTimeField(required=True, input_formats=["%Y-%m-%dT%H:%M", ])
-    check_out = forms.DateTimeField(required=True,  input_formats=["%Y-%m-%dT%H:%M", ])
+    check_in = forms.DateTimeField(required=True, input_formats=["%Y-%m-%d", ])
+    check_out = forms.DateTimeField(required=True,  input_formats=["%Y-%m-%d", ])
     number_of_rooms = forms.IntegerField(required=True)
 
 class ProfileForm(forms.ModelForm):
