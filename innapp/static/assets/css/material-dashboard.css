@@ -9461,23 +9461,23 @@ a.text-dark:focus {
 
 .btn.btn-primary {
   color: #fff;
-  background-color: #9c27b0;
-  border-color: #9c27b0;
+  background-color: #022b06;
+  border-color: #08410e;
   box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);
 }
 
 .btn.btn-primary:hover {
   color: #fff;
-  background-color: #9124a3;
-  border-color: #701c7e;
+  background-color: #022b06;
+  border-color: #08410e;
 }
 
 .btn.btn-primary:focus,
 .btn.btn-primary.focus,
 .btn.btn-primary:hover {
   color: #fff;
-  background-color: #9124a3;
-  border-color: #701c7e;
+  background-color: #1d5028;
+  border-color: #033315;
 }
 
 .btn.btn-primary:active,
@@ -9503,17 +9503,17 @@ a.text-dark:focus {
 .show>.btn.btn-primary.dropdown-toggle:focus,
 .show>.btn.btn-primary.dropdown-toggle.focus {
   color: #fff;
-  background-color: #9124a3;
-  border-color: #3f1048;
+  background-color: #034926;
+  border-color: #063020;
 }
 
 .open>.btn.btn-primary.dropdown-toggle.bmd-btn-icon {
   color: inherit;
-  background-color: #9c27b0;
+  background-color: #073324;
 }
 
 .open>.btn.btn-primary.dropdown-toggle.bmd-btn-icon:hover {
-  background-color: #9124a3;
+  background-color: #063b20;
 }
 
 .btn.btn-primary.disabled:focus,
@@ -9526,8 +9526,8 @@ a.text-dark:focus {
 
 .btn.btn-primary.disabled:hover,
 .btn.btn-primary:disabled:hover {
-  background-color: #9c27b0;
-  border-color: #9c27b0;
+  background-color: #063f2e;
+  border-color: #063f2e;
 }
 
 .btn.btn-primary:focus,
@@ -9546,7 +9546,7 @@ a.text-dark:focus {
 .btn.btn-primary.btn-link:focus,
 .btn.btn-primary.btn-link:active {
   background-color: transparent;
-  color: #9c27b0;
+  color: #08381c;
 }
 
 .btn.btn-secondary {
@@ -15881,15 +15881,15 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 
 .fixed-plugin .btn.btn-primary {
   color: #fff;
-  background-color: #9c27b0;
-  border-color: #9c27b0;
+  background-color: #02380f;
+  border-color: #02220f;
   box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);
 }
 
 .fixed-plugin .btn.btn-primary:hover {
   color: #fff;
-  background-color: #9124a3;
-  border-color: #701c7e;
+  background-color: #03443a;
+  border-color: #043b24;
 }
 
 .fixed-plugin .btn.btn-primary:focus,
@@ -17562,25 +17562,25 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 .card.bg-rose,
 .card.card-rotate.bg-rose .front,
 .card.card-rotate.bg-rose .back {
-  background: linear-gradient(60deg, #ec407a, #d81b60);
+  background: linear-gradient(60deg, #ec407a, #0c634d);
 }
 
 .card .card-header-primary .card-icon,
 .card .card-header-primary:not(.card-header-icon):not(.card-header-text),
 .card .card-header-primary .card-text {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(22, 114, 126, 0.4);
 }
 
 .card .card-header-danger .card-icon,
 .card .card-header-danger:not(.card-header-icon):not(.card-header-text),
 .card .card-header-danger .card-text {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(244, 67, 54, 0.4);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(35, 155, 123, 0.4);
 }
 
 .card .card-header-rose .card-icon,
 .card .card-header-rose:not(.card-header-icon):not(.card-header-text),
 .card .card-header-rose .card-text {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(15, 88, 52, 0.4);
 }
 
 .card .card-header-warning .card-icon,
@@ -17598,7 +17598,7 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 .card .card-header-success .card-icon,
 .card .card-header-success:not(.card-header-icon):not(.card-header-text),
 .card .card-header-success .card-text {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(76, 175, 80, 0.4);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(5, 48, 7, 0.4);
 }
 
 .card [class*="card-header-"],

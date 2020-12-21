@@ -34,3 +34,5 @@ class Book(models.Model):
 class ClientProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     phone_number = models.CharField(default="+407...", max_length=50)
+    address = models.CharField(max_length=50)
+

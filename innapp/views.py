@@ -178,6 +178,7 @@ class ProfileUpdateView(UpdateView):
     def form_valid(self, form):
         data = form.cleaned_data
         self.object.phone_number = data['phone_number']
+        self.object.address = data['address']
         self.request.user.first_name = data['first_name']
         self.request.user.last_name = data['last_name']
         self.request.user.email = data['e_mail']
