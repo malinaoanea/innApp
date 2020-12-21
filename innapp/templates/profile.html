@@ -36,7 +36,7 @@
 
 
 
-<body id = "page-top">
+<body>
 
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -68,9 +68,9 @@
 </nav>
 
   <div class="wrapper ">
-    <div class="sidebar" data-color="green" data-background-color="white" data-image="{% static 'assets/img/bg-signup.jpg'%}">
+    <!-- <div class="sidebar" data-color="green" data-background-color="white" data-image="{% static 'assets/img/bg-signup.jpg'%}"> -->
       
-    </div> 
+    <!-- </div>  -->
     <div class="main-panel">
      
       <div class="content">
@@ -111,7 +111,7 @@
                         <div class="form-group">
                           <label class="bmd-label-floating">Phone</label>
                           <br>
-                          <label class="bmd-label-floating">{{ selected_user.phone_number}}</label>
+                          <label class="bmd-label-floating">{{ selected_user.profile.phone_number}}</label>
                         </div>
                       </div>
                     </div>
@@ -121,13 +121,13 @@
                         <div class="form-group">
                           <label class="bmd-label-floating">Address</label>
                           <br>
-                          <label class="bmd-label-floating">{{ selected_user.address}}</label>
+                          <label class="bmd-label-floating">{{ selected_user.profile.address}}</label>
                         </div>
                       </div>
                     </div>
                     
                    
-                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                    <a href="{% url 'profile_update' user.id %}" class="btn btn-primary pull-right">Edit Profile</a>
                     <div class="clearfix"></div>
                   </form>
                   <!-- <form>

@@ -171,8 +171,11 @@ class ProfileUpdateView(UpdateView):
         context = super(ProfileUpdateView, self).get_context_data(**kwargs)
         user =  self.object.user
         context['form'].fields['first_name'].initial = user.first_name
+        print(user.first_name)
+        print(user.last_name)
+
         context['form'].fields['last_name'].initial = user.last_name
-        context['form'].fields['e_mail'].initial = user.email
+        context['form'].fields['email'].initial = user.email
         return context
 
     def form_valid(self, form):
@@ -181,7 +184,7 @@ class ProfileUpdateView(UpdateView):
         self.object.address = data['address']
         self.request.user.first_name = data['first_name']
         self.request.user.last_name = data['last_name']
-        self.request.user.email = data['e_mail']
+        self.request.user.email = data['email']
         self.object.save()
         self.request.user.save()
-        return redirect("",kwargs={"pk": self.request.user.id})
+        return redirect("/",kwargs={"pk": self.request.user.id})

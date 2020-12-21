@@ -59,6 +59,10 @@ body {
   color: #212529;
   text-align: left;
   background-color: #fafafa;
+  
+  background-image: url('pages/assets/img/vama.jpeg');
+  
+  
 }
 
 [tabindex="-1"]:focus {
