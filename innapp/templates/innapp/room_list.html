@@ -7,29 +7,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 
-  
-  <link rel="stylesheet" href="{% static 'innapp/css/stil_room_list.css' %}">
-
   <meta charset="UTF-8"> 
   <title>Room List</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'pages/assets/img/favicon.ico'%}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'pages/css/styles_rooms.css'%}" rel="stylesheet" />
+</head>
 
-<body>
-    <h2>Rooms</h2>
-    <!-- Main Content -->
-    <div id="rooms">
-        {% for room_category, room_url in room_list %}
-        <div class="room">
-          <a href="{{room_url}}"> 
-            <img class = "main-image" src="{% static 'innapp/css/door.jpeg' %}" alt="Trulli" height="750">
-          <h2>{{room_category}}<h2>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi
-          </p>
-          </a>
-        </div>
+<body id="page-top">
+          <!-- Navigation-->
+          <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+              <div class="container">
+                  <!-- <a class="navbar-brand js-scroll-trigger" href="/book">Book</a> -->
+                  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                      Menu
+                      <i class="fas fa-bars"></i>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarResponsive">
+                      <ul class="navbar-nav ml-auto">
+                          <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li> -->
+                          <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/room_list">Rooms</a></li> -->
+                          <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Surroundings</a></li> -->
+                          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/">Home</a></li>
+                          
+                          {% if user.is_authenticated %}
+                          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'profile' user.id %}">Hello, {{ user.username }}</a></li>
+                          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/logout">Logout</a></li>
+  
+                          {% else %}
+                              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">Login</a></li>
+  
+                          {% endif %}
+  
+                      </ul>
+                  </div>
+              </div>
+          </nav>
+          
+          <!-- <header class="masthead">
+            <div class="container d-flex h-100 align-items-center">
+                <div class="mx-auto text-center">
+                    <h1 class="mx-auto my-0 text-uppercase">Casa Georgiana</h1>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Get your dose of freedom</h2>
+                    <a class="btn btn-primary js-scroll-trigger" href="/register">Register</a>
+                </div>
+            </div>
+        </header> -->
+        <section class="projects-section bg-light" id="projects">
+          <div class="container">
+              <!-- <-- Featured Project Row-->
+              <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+                  <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{% static 'pages/assets/img/rarau2_Fotor.jpg' %}" alt="" /></div>
+                  <div class="col-xl-4 col-lg-5">
+                      <div class="featured-text text-center text-lg-left">
+                          <h4>One of the best</h4>
+                          <p class="text-black-50 mb-0">You can rent the entire house or just the number of bedrooms you want.</p>
+                          
+                            
 
-        {% endfor %}
-    </div>
+                      </div>
+                  </div>
+              </div> -->
+              <!-- Project One Row -->
+              <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+                <div class="col-lg-6"><img class="img-fluid" src="{% static 'pages/assets/img/cottage.jpeg' %}" alt="" /></div>
+                  <div class="col-lg-6">
+                      <div class="bg-black text-center h-100 project">
+                          <div class="d-flex h-100">
+                              <div class="project-text w-100 my-auto text-center text-lg-left">
+                                  <h4 class="text-white">With Bathroom</h4>
+                                  <p class="mb-0 text-white-50">We have four rooms which come with bathroom. The price is 80 lei per night.</p>
+                                  <a class="navbar-brand js-scroll-trigger" href="/book">Book now with bathroom</a> 
+                                  <hr class="d-none d-lg-block mb-0 ml-0" />
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- Project Two Row-->
+              <div class="row justify-content-center no-gutters">
+                  <div class="col-lg-6"><img class="img-fluid" src="{% static 'pages/assets/img/old_man.jpeg' %}" alt="" /></div>
+                  <div class="col-lg-6 order-lg-first">
+                      <div class="bg-black text-center h-100 project">
+                          <div class="d-flex h-100">
+                              <div class="project-text w-100 my-auto text-center text-lg-right">
+                                  <h4 class="text-white">Without Bathroom</h4>
+                                  <p class="mb-0 text-white-50">
+                                      You don't have to worry if all the rooms with bathroom are booked or you think you can manage without! We have two bathrooms for share!</p>
+                                      <a class="navbar-brand js-scroll-trigger" href="/book">Book now without bathroom</a> 
+                                <hr class="d-none d-lg-block mb-0 mr-0" />
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section> 
+        <!-- About-->
+        <!-- <section class="about-section text-center" id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="text-white mb-4">Why us?</h2>
+                        <p class="text-white-50">
+                            We've been putting our best efforts into Casa Georgiana since '02. Hundreds of people have been our guests, most of them always returning. It's about the atmosphere, surroundings, and the strong feeling of freedom our village is thriving with.
+                        </p>
+                    </div>
+                </div>
+                <img class="img-fluid" src="{% static 'pages/assets/img/transfire.png' %}" alt="" />
+            </div>
+        </section> -->
+  
+    
 </body>
 
 </html>

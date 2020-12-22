@@ -22,9 +22,12 @@
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="{% static 'pages/css/style_register.css'%}" />
+
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 
 <body>
+	
 
     <!-- <body>
         <form action="" method="POST">
@@ -33,9 +36,11 @@
             <button type="submit">Book!</button>
         </form>
         
-    </body> -->
-    
-    <div id="booking" class="section">
+	</body> -->
+	
+    <a href="/login"><i class='fas fa-user-circle' style='font-size:40px; position: absolute;right: -20px; top: 0px;; color: black;' href="/login"></i></a>
+	
+	<div id="booking" class="section">
         
             
 
@@ -113,6 +118,13 @@
 							<div class="form-btn">
 								<button class="submit-btn" type="submit" name= "submit">Book Now</button>
 							</div>
+							
+						</form>
+						<!-- <div class="form-btn">
+							<button class="submit-btn" href="/room_list">About</a>
+						</div> -->
+						<form action="/reservation_history">
+							<input class="submit-btn" type="submit" value="View my reservations" />
 						</form>
 					</div>
 				</div>

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RoomListView, BookList, BookingView, MainView, RoomView, RegisterView, LoginView, ProfileUpdateView,ProfileView , logout_r, Booked
+from .views import RoomListView, BookList, BookingView, MainView, RoomView, RegisterView, LoginView, index, ProfileUpdateView,ProfileView , logout_r, Booked
 
 
 app_name = 'innapp'
@@ -18,6 +18,7 @@ urlpatterns = [
     # path('profile_update', ProfileUpdateView.as_view(), name='profile_update'),
     path('profile', ProfileView.as_view(), name='profile'),
     path('profile/<int:pk>', ProfileView.as_view(), name='profile'),
+    path('reservation_history/', index, name='reservation_history'),
 
     path('profile_update/<int:pk>', ProfileUpdateView.as_view(), name='profile_update'),
     path('booked', Booked.as_view(), name='booked')

@@ -53,6 +53,8 @@ def RoomListView(request):
     }
     return render (request, 'innapp/room_list.html', context=context)
 
+
+
 class RoomView(View):
     def get(self, request, *args, **kwargs):
         # print(self.request.user)
@@ -99,17 +101,21 @@ class BookingView(FormView):
         if number_of_availbale_rooms > 0:
 
             # take the first room available
-            room = available_rooms[0]
-            book = Book.objects.create(
-                client = self.request.user,
-                room = room,
-                check_in = data['check_in'],
-                check_out= data['check_out'], 
-                number_of_rooms=data['number_of_rooms']
-            )
+            try:
+                room = available_rooms[0]
+                book = Book.objects.create(
+                    client = self.request.user,
+                    room = room,
+                    check_in = data['check_in'],
+                    check_out= data['check_out'], 
+                    number_of_rooms=data['number_of_rooms']
+                )
+                
 
-            book.save()
-            return redirect("/booked")
+                book.save()
+                return redirect("/booked")
+            except:
+                return HttpResponse("You must be logged in before booking!")
         else:
             # return HttpResponse('There are no rooms for this category available.')
             return HttpResponse("There are no available rooms for this period. Please choose another one!")
@@ -188,3 +194,31 @@ class ProfileUpdateView(UpdateView):
         self.object.save()
         self.request.user.save()
         return redirect("/",kwargs={"pk": self.request.user.id})
+
+def index(request):
+    # next = request.GET.get('next', '/admin')
+    # if request.method == "POST":
+    #     username = request.POST['username']
+    #     password = request.POST['password']
+
+    #     user = authenticate(username=username, password=password)
+
+    #     if user is not None:
+    #         if user.is_active:
+    #             login(request, user)
+    #             data = Students.objects.all()
+    #             return render_to_response("login/profile.html", {'data', data})
+    #         else:
+    #             HttpResponse("Inactive User.")
+    #     else:
+    #         print("User Not Found!")
+    #         return HttpResponseRedirect(settings.LOGIN_URL)
+    book = Book.objects.filter(client=request.user)
+
+    
+    books = {
+        "book": book
+    }
+    context = {"book": book}
+    return render(request, 'reservation_history.html', context = context) 
+    # return render(request, 'reservation_history.html', books)
