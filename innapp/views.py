@@ -134,10 +134,11 @@ class RegisterView(CreateView):
     model = User
 
     def form_valid(self, form):
+
         data = form.cleaned_data
         user = User.objects.create_user(username=data['username'],
                                         password=data['password1'])
-        ClientProfile.objects.create(user=user)
+        client = ClientProfile.objects.create(user=user)
         return redirect('/login')
 
 
@@ -181,6 +182,7 @@ class ProfileUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(ProfileUpdateView, self).get_context_data(**kwargs)
+
         user =  self.object.user
         context['form'].fields['first_name'].initial = user.first_name
         print(user.first_name)
