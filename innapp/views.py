@@ -74,6 +74,13 @@ class Booked(View):
         """
         return render(request, "booked.html")
 
+class NoRoom(View):
+    def get(self, request, *args, **kwargs):
+        """
+        docstring
+        """
+        return render(request, "noroomavailable.html")
+
 
 class BookList(ListView):
     model = Book
@@ -115,10 +122,9 @@ class BookingView(FormView):
                 book.save()
                 return redirect("/booked")
             except:
-                return HttpResponse("You must be logged in before booking!")
+                return redirect("/login")
         else:
-            # return HttpResponse('There are no rooms for this category available.')
-            return HttpResponse("There are no available rooms for this period. Please choose another one!")
+            return redirect("/noroom")
 
 
 

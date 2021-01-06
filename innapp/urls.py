@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RoomListView, BookList, BookingView, MainView, RoomView, RegisterView, LoginView, index, ProfileUpdateView,ProfileView , logout_r, Booked
+from .views import RoomListView, NoRoom, BookList, BookingView, MainView, RoomView, RegisterView, LoginView, index, ProfileUpdateView,ProfileView , logout_r, Booked
 
 
 app_name = 'innapp'
@@ -21,7 +21,8 @@ urlpatterns = [
     path('reservation_history/', index, name='reservation_history'),
 
     path('profile_update/<int:pk>', ProfileUpdateView.as_view(), name='profile_update'),
-    path('booked', Booked.as_view(), name='booked')
+    path('booked', Booked.as_view(), name='booked'),
+    path('noroom', NoRoom.as_view(), name="noroom")
 ]
 
 # urlpatterns += statcfiles_urlpatterns()
